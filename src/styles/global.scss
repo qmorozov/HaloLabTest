@@ -1,4 +1,5 @@
-@use 'variables' as variables;
+@use 'variables';
+@use './mixin/media';
 @import 'normalize.css';
 
 /* ==== Parts ==== */
@@ -8,12 +9,72 @@
 @import 'mixin/media';
 
 body {
+  position: relative;
+  min-height: 100vh;
   font-family: 'Roboto', sans-serif;
   background-color: #f2f2f2;
+  color: variables.$text;
 }
 
 .container {
   margin: 0 auto;
   padding: 0 variables.rem(15px);
   max-width: variables.rem(1136px);
+  letter-spacing: -0.02em;
 }
+
+.btn {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  flex-shrink: 0;
+  padding: variables.rem(10px);
+  font-weight: 500;
+  font-size: variables.rem(14px);
+  line-height: variables.rem(20px);
+  border-radius: variables.rem(16px);
+  cursor: pointer;
+  text-transform: uppercase;
+
+  @include media.for-tablet {
+    padding: variables.rem(16px);
+    font-size: variables.rem(16px);
+    line-height: variables.rem(24px);
+  }
+}
+
+.trim-text {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.loader {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  max-width: 64px;
+  max-height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  div {
+    position: absolute;
+    border: 2px solid rgba(0, 31, 122, 0.3);
+    opacity: 1;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+
+    &:nth-child(2) {
+      animation-delay: -0.5s;
+    }
+  }
+}
+

@@ -1,0 +1,63 @@
+@use '../variables';
+@use '../mixin/media';
+
+.Wrapper {
+  padding: variables.rem(60px) 0;
+
+  @include media.for-laptop {
+    padding: variables.rem(80px) 0;
+  }
+
+  @include media.for-desktop {
+    padding: variables.rem(105px) 0;
+  }
+}
+
+.Items {
+  @include media.for-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: variables.rem(26px);
+    column-gap: variables.rem(26px);
+  }
+
+  @include media.for-tablet {
+    display: grid;
+    justify-content: center;
+    row-gap: variables.rem(26px);
+    column-gap: variables.rem(26px);
+    grid-template-rows: variables.rem(256px);
+    grid-template-columns: repeat(2, variables.rem(352px));
+  }
+
+  @include media.for-laptop {
+    row-gap: variables.rem(39px);
+    column-gap: variables.rem(48px);
+    grid-template-columns: repeat(3, variables.rem(352px));
+  }
+}
+
+.BtnCheapest {
+  min-width: variables.rem(235px);
+  margin: variables.rem(45px) auto 0;
+  background-color: variables.$primary;
+  color: #fff;
+  border: variables.rem(1px) solid transparent;
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+
+  &:hover {
+    background-color: transparent;
+    color: variables.$primary;
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  @include media.for-mobile {
+    min-width: auto;
+    max-width: variables.rem(235px);
+  }
+
+  @include media.for-tablet {
+    margin: variables.rem(69px) auto 0;
+  }
+}
