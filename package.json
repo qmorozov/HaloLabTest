@@ -48,8 +48,7 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0",
-    "node-sass": "^7.0.3",
     "prettier": "^2.8.2",
-    "sass-loader": "^13.2.0"
+    "sass": "^1.57.1"
   }
 }

@@ -1,2 +1,14 @@
+@use 'variables' as variables;
 @import 'normalize.css';
-@import 'variables';
+
+/* ==== Parts ==== */
+@import 'parts/reset';
+
+/* ==== Mixin ==== */
+@import 'mixin/media';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f2f2f2;
+  font-size: variables.rem(10px);
+}

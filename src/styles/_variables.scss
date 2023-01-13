@@ -1,0 +1,29 @@
+@use 'sass:math' as math;
+
+/* ==== Color ==== */
+
+$primary: #4bcfa0;
+$text: #000;
+$error: #e43f3f;
+
+/* ==== Mixin ==== */
+$breakpoints: (
+  'mobile': (
+    max-width: 1024px,
+  ),
+  'tablet': (
+    min-width: 1024px,
+  ),
+  'laptop': (
+    min-width: 1280px,
+  ),
+  'desktop': (
+    min-width: 1920px,
+  ),
+) !default;
+
+/* ==== Functions ==== */
+
+@function rem($size) {
+  @return math.div($size, 16px) * 1rem;
+}
