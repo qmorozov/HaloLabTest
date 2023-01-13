@@ -10,5 +10,10 @@
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #f2f2f2;
-  font-size: variables.rem(10px);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 variables.rem(15px);
+  max-width: variables.rem(1136px);
 }
