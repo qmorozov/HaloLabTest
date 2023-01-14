@@ -12,15 +12,17 @@ body {
   position: relative;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
+  letter-spacing: -0.02em;
   background-color: #f2f2f2;
   color: variables.$text;
+  overflow-x: hidden;
 }
 
 .container {
   margin: 0 auto;
   padding: 0 variables.rem(15px);
+  //width: fit-content;
   max-width: variables.rem(1136px);
-  letter-spacing: -0.02em;
 }
 
 .btn {

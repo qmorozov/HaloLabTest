@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './components/Card';
 import Loader from './components/Loader';
+import Modal from './components/Modal';
 
 import Style from './styles/pages/Main.module.scss';
 
@@ -14,6 +15,23 @@ export interface IData {
 const Main = () => {
   const [data, setData] = useState<IData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [visibleModal, setVisibleModal] = useState(false);
+  const [modalData, setModalData] = useState<IData>({
+    name: '',
+    category: '',
+    price: 0,
+  });
+  const [cheapest, setCheapest] = useState<IData>({
+    name: '',
+    category: '',
+    price: 0,
+  });
+
+  useEffect(() => {
+    setCheapest(
+      data.reduce((min, item) => (item.price < min.price ? item : min), data[0])
+    );
+  }, [data]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,15 +54,37 @@ const Main = () => {
     return <Loader />;
   }
 
+  const handleModalData = (data: IData) => {
+    setModalData(data);
+  };
+
   return (
     <section className={Style.Wrapper}>
       <div className="container">
+        <Modal
+          {...modalData}
+          visible={visibleModal}
+          setVisible={setVisibleModal}
+        />
         <ul className={Style.Items}>
           {data.map((card: IData, index: number) => (
-            <Card {...card} key={index} />
+            <Card
+              {...card}
+              key={index}
+              setVisibleModal={setVisibleModal}
+              onClick={() => handleModalData(card)}
+            />
           ))}
         </ul>
-        <button className={`${Style.BtnCheapest} btn`}>Buy cheapest</button>
+        <button
+          className={`${Style.BtnCheapest} btn`}
+          onClick={() => {
+            setModalData(cheapest);
+            setVisibleModal(true);
+          }}
+        >
+          Buy cheapest
+        </button>
       </div>
     </section>
   );

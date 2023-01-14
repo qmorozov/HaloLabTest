@@ -75,6 +75,7 @@
 
 .Price {
   position: relative;
+  display: inline-block;
   padding-left: variables.rem(11px);
 
   &Currency {

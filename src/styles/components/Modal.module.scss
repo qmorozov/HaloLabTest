@@ -1,0 +1,241 @@
+@use '../variables';
+@use '../mixin/media';
+
+@use 'Card.module' as Card;
+
+.Container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease-in-out;
+
+  &.Visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.Wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: 90vw;
+  height: fit-content;
+  max-height: variables.rem(536px);
+  padding: variables.rem(34px) variables.rem(30px) variables.rem(46px)
+    variables.rem(26px);
+  background-color: #fff;
+  border-radius: variables.rem(24px);
+  transform: scale(0.5);
+  transition: transform .2s ease-in-out;
+
+  &.Visible {
+    transform: scale(1);
+  }
+
+  @include media.for-tablet {
+    max-width: variables.rem(384px);
+  }
+
+  @include media.for-laptop {
+    padding: variables.rem(54px) variables.rem(50px) variables.rem(66px)
+      variables.rem(46px);
+  }
+}
+
+.Info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.Category {
+  //@extend .Category;
+  //@forward .Category from Card;
+}
+
+.Name {
+  //@extend .Name;
+  margin-top: variables.rem(8px);
+}
+
+.Price {
+  //@extend .Price;
+  margin: variables.rem(16px) auto 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  row-gap: variables.rem(32px);
+  margin-top: variables.rem(32px);
+
+  .Fields {
+    display: flex;
+    flex-direction: column;
+    row-gap: variables.rem(16px);
+
+    fieldset {
+      position: relative;
+
+      &.Error {
+        input {
+          border-color: variables.$error;
+        }
+
+        span {
+          position: absolute;
+          display: block;
+          font-size: variables.rem(12px);
+          line-height: variables.rem(16px);
+          color: variables.$error;
+        }
+
+        button {
+          position: absolute;
+          top: variables.rem(16px);
+          right: variables.rem(11px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: variables.rem(24px);
+          height: variables.rem(24px);
+          border-radius: 100%;
+          background-color: variables.$error;
+          cursor: pointer;
+          transition: background-color .3s ease-in-out;
+
+          &:hover {
+            background-color: lighten(variables.$error, 6%);
+          }
+
+          &::before,
+          &::after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: variables.rem(12px);
+            height: variables.rem(2px);
+            background-color: #fff;
+            border-radius: 100%;
+          }
+
+          &::before {
+            transform: rotate(45deg);
+          }
+
+          &::after {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+
+  input {
+    padding: variables.rem(16px);
+    width: 100%;
+    font-size: variables.rem(16px);
+    line-height: variables.rem(24px);
+    color: rgba(0, 0, 0, 0.5);
+    border: variables.rem(1px) solid rgba(0, 0, 0, 0.2);
+    border-radius: variables.rem(16px);
+    transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+    &::placeholder {
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+    }
+
+    &:hover {
+      color: #000;
+      border-color: variables.$primary;
+    }
+  }
+
+  :global .btn {
+    display: block;
+    position: relative;
+    width: 100%;
+    color: #fff;
+    background-color: variables.$primary;
+    transition: background-color 0.3s ease-in-out;
+
+    span {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        bottom: 50%;
+        content: '';
+        width: variables.rem(20px);
+        height: variables.rem(20px);
+        opacity: 0;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4.16663 10H15.8333' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath d='M10 4.16666L15.8333 9.99999L10 15.8333' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e ");
+        transform: translateY(-50%);
+        transition: opacity 0.2s ease-in-out, right 0.5s ease-in-out;
+      }
+    }
+
+    &:hover {
+      background-color: #50daa8;
+
+      span:before {
+        opacity: 1;
+        right: variables.rem(-28px);
+      }
+    }
+  }
+}
+
+.Close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: variables.rem(-14px);
+  right: variables.rem(-10px);
+  width: variables.rem(40px);
+  height: variables.rem(40px);
+  background-color: #f2f2f2;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken(#f2f2f2, 10%);
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: variables.rem(12px);
+    height: variables.rem(2px);
+    background-color: #000;
+    border-radius: 100%;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
