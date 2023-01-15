@@ -1,8 +1,6 @@
 @use '../variables';
 @use '../mixin/media';
 
-@use 'Card.module' as Card;
-
 .Container {
   position: fixed;
   top: 0;
@@ -28,11 +26,12 @@
   display: inline-block;
   position: relative;
   width: 100%;
-  max-width: 90vw;
+  max-width: variables.rem(400px);
   height: fit-content;
   max-height: variables.rem(536px);
   padding: variables.rem(34px) variables.rem(30px) variables.rem(46px)
     variables.rem(26px);
+  margin: 0 variables.rem(15px);
   background-color: #fff;
   border-radius: variables.rem(24px);
   transform: scale(0.5);
@@ -42,8 +41,9 @@
     transform: scale(1);
   }
 
-  @include media.for-tablet {
-    max-width: variables.rem(384px);
+  :global .price {
+    margin-top: variables.rem(16px);
+    margin-right: 0;
   }
 
   @include media.for-laptop {
@@ -58,21 +58,6 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-}
-
-.Category {
-  //@extend .Category;
-  //@forward .Category from Card;
-}
-
-.Name {
-  //@extend .Name;
-  margin-top: variables.rem(8px);
-}
-
-.Price {
-  //@extend .Price;
-  margin: variables.rem(16px) auto 0;
 }
 
 form {
@@ -173,6 +158,11 @@ form {
     background-color: variables.$primary;
     transition: background-color 0.3s ease-in-out;
 
+    &:disabled {
+      cursor: auto;
+      background-color: lighten(variables.$primary, 15%);
+    }
+
     span {
       position: relative;
 
@@ -191,7 +181,7 @@ form {
       }
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: #50daa8;
 
       span:before {

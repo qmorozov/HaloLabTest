@@ -5,6 +5,7 @@ import Loader from './components/Loader';
 import Modal from './components/Modal';
 
 import Style from './styles/pages/Main.module.scss';
+import ModalForm from './modules/Main/ModalForm';
 
 export interface IData {
   name: string;
@@ -61,11 +62,9 @@ const Main = () => {
   return (
     <section className={Style.Wrapper}>
       <div className="container">
-        <Modal
-          {...modalData}
-          visible={visibleModal}
-          setVisible={setVisibleModal}
-        />
+        <Modal visible={visibleModal} setVisible={setVisibleModal}>
+          <ModalForm {...modalData} visibleModal={visibleModal} />
+        </Modal>
         <ul className={Style.Items}>
           {data.map((card: IData, index: number) => (
             <Card

@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react';
+import { FC } from 'react';
 import Style from '../../styles/components/Card.module.scss';
 
 interface ICard {
@@ -19,13 +19,13 @@ const Card: FC<ICard> = ({
   return (
     <li className={Style.Wrapper} onClick={onClick}>
       <div className={Style.Header}>
-        <span className={`${Style.Category}`}>{category}</span>
-        <span className={`${Style.Name}`}>{name}</span>
+        <span className="trim-text card__category">{category}</span>
+        <span className="trim-text card__name">{name}</span>
       </div>
       <div className={Style.Footer}>
-        <div className={Style.Price}>
-          <span className={Style.PriceCurrency}>$</span>
-          <span className={Style.PriceCount}>{price}</span>
+        <div className="price">
+          <span className="price__currency">$</span>
+          <span className="price__count">{price}</span>
         </div>
         <button
           className={`btn ${Style.Button}`}
