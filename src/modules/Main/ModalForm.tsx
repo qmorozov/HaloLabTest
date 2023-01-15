@@ -96,6 +96,9 @@ const ModalForm: FC<IModalForm> = ({ category, price, name, visibleModal }) => {
               value={formData.name}
               placeholder="Name"
               onChange={handleChange}
+              aria-label="Name input"
+              aria-required="true"
+              aria-invalid={errors.name.length !== 0}
             />
             {errors.name.length !== 0 && formData.name.length > 0 && (
               <button
@@ -103,6 +106,7 @@ const ModalForm: FC<IModalForm> = ({ category, price, name, visibleModal }) => {
                 onClick={() =>
                   setFormData((prevData) => ({ ...prevData, name: '' }))
                 }
+                aria-label="Clear name input"
               />
             )}
             <span>{errors.name}</span>
@@ -114,6 +118,9 @@ const ModalForm: FC<IModalForm> = ({ category, price, name, visibleModal }) => {
               value={formData.phone}
               placeholder="Phone"
               onChange={handleChange}
+              aria-label="Phone input"
+              aria-required="true"
+              aria-invalid={errors.phone.length !== 0}
             />
             {errors.phone.length !== 0 && formData.phone.length > 0 && (
               <button
@@ -121,12 +128,18 @@ const ModalForm: FC<IModalForm> = ({ category, price, name, visibleModal }) => {
                 onClick={() =>
                   setFormData((prevData) => ({ ...prevData, phone: '' }))
                 }
+                aria-label="Clear phone input"
               />
             )}
             <span>{errors.phone}</span>
           </fieldset>
         </div>
-        <button className="btn" type="submit" disabled={hasErrors}>
+        <button
+          className="btn"
+          type="submit"
+          disabled={hasErrors}
+          aria-label="Order button"
+        >
           <span>Order</span>
         </button>
       </form>

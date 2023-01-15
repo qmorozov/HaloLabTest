@@ -1,0 +1,64 @@
+@use '../variables';
+@use '../mixin/media';
+
+.card__category {
+  font-size: variables.rem(12px);
+  line-height: variables.rem(20px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: lighten(variables.$text, 50%);
+
+  @include media.for-tablet {
+    font-size: variables.rem(16px);
+    line-height: variables.rem(24px);
+  }
+}
+
+.card__name {
+  margin-top: variables.rem(8px);
+  font-size: variables.rem(25px);
+  line-height: variables.rem(32px);
+
+  @include media.for-tablet {
+    font-size: variables.rem(40px);
+    line-height: variables.rem(48px);
+  }
+}
+
+.price {
+  position: relative;
+  display: inline-block;
+  padding-left: variables.rem(11px);
+
+  &__currency {
+    position: absolute;
+    top: variables.rem(6px);
+    left: 0;
+    font-size: variables.rem(15px);
+    line-height: variables.rem(20px);
+  }
+
+  &__count {
+    font-size: variables.rem(35px);
+    line-height: variables.rem(42px);
+  }
+
+  @include media.for-mobile {
+    margin-right: auto;
+  }
+
+  @include media.for-laptop {
+    padding-left: variables.rem(21px);
+
+    &__currency {
+      top: variables.rem(13px);
+      font-size: variables.rem(30px);
+      line-height: variables.rem(35px);
+    }
+
+    &__count {
+      font-size: variables.rem(60px);
+      line-height: variables.rem(72px);
+    }
+  }
+}

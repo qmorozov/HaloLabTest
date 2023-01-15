@@ -131,6 +131,7 @@ form {
   input {
     padding: variables.rem(16px);
     width: 100%;
+    outline: none;
     font-size: variables.rem(16px);
     line-height: variables.rem(24px);
     color: rgba(0, 0, 0, 0.5);

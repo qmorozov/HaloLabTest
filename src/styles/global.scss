@@ -3,7 +3,9 @@
 @import 'normalize.css';
 
 /* ==== Parts ==== */
+@import 'parts/btn';
 @import 'parts/reset';
+@import 'parts/card-elements';
 
 /* ==== Mixin ==== */
 @import 'mixin/media';
@@ -24,119 +26,9 @@ body {
   max-width: variables.rem(1136px);
 }
 
-.btn {
-  display: block;
-  width: fit-content;
-  height: fit-content;
-  flex-shrink: 0;
-  padding: variables.rem(10px);
-  font-weight: 500;
-  font-size: variables.rem(14px);
-  line-height: variables.rem(20px);
-  border-radius: variables.rem(16px);
-  cursor: pointer;
-  text-transform: uppercase;
-
-  @include media.for-tablet {
-    padding: variables.rem(16px);
-    font-size: variables.rem(16px);
-    line-height: variables.rem(24px);
-  }
-}
-
 .trim-text {
   max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
-
-.loader {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  max-width: 64px;
-  max-height: 64px;
-  min-width: 64px;
-  min-height: 64px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  div {
-    position: absolute;
-    border: 2px solid rgba(0, 31, 122, 0.3);
-    opacity: 1;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-
-    &:nth-child(2) {
-      animation-delay: -0.5s;
-    }
-  }
-}
-
-.card__category {
-  font-size: variables.rem(12px);
-  line-height: variables.rem(20px);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: lighten(variables.$text, 50%);
-
-  @include media.for-tablet {
-    font-size: variables.rem(16px);
-    line-height: variables.rem(24px);
-  }
-}
-
-.card__name {
-  margin-top: variables.rem(8px);
-  font-size: variables.rem(25px);
-  line-height: variables.rem(32px);
-
-  @include media.for-tablet {
-    font-size: variables.rem(40px);
-    line-height: variables.rem(48px);
-  }
-}
-
-.price {
-  position: relative;
-  display: inline-block;
-  padding-left: variables.rem(11px);
-
-  &__currency {
-    position: absolute;
-    top: variables.rem(6px);
-    left: 0;
-    font-size: variables.rem(15px);
-    line-height: variables.rem(20px);
-  }
-
-  &__count {
-    font-size: variables.rem(35px);
-    line-height: variables.rem(42px);
-  }
-
-  @include media.for-mobile {
-    margin-right: auto;
-  }
-
-  @include media.for-laptop {
-    padding-left: variables.rem(21px);
-
-    &__currency {
-      top: variables.rem(13px);
-      font-size: variables.rem(30px);
-      line-height: variables.rem(35px);
-    }
-
-    &__count {
-      font-size: variables.rem(60px);
-      line-height: variables.rem(72px);
-    }
-  }
 }

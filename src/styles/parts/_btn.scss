@@ -1,0 +1,22 @@
+@use '../variables';
+@use '../mixin/media';
+
+.btn {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  flex-shrink: 0;
+  padding: variables.rem(10px);
+  font-weight: 500;
+  font-size: variables.rem(14px);
+  line-height: variables.rem(20px);
+  border-radius: variables.rem(16px);
+  cursor: pointer;
+  text-transform: uppercase;
+
+  @include media.for-tablet {
+    padding: variables.rem(16px);
+    font-size: variables.rem(16px);
+    line-height: variables.rem(24px);
+  }
+}

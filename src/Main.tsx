@@ -72,6 +72,7 @@ const Main = () => {
               key={index}
               setVisibleModal={setVisibleModal}
               onClick={() => handleModalData(card)}
+              aria-label={`Open modal with ${card.name} item`}
             />
           ))}
         </ul>
@@ -81,6 +82,8 @@ const Main = () => {
             setModalData(cheapest);
             setVisibleModal(true);
           }}
+          tabIndex={0}
+          aria-label="Open modal with cheapest item"
         >
           Buy cheapest
         </button>

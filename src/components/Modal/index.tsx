@@ -14,15 +14,20 @@ const Modal: FC<IModal> = ({ visible, setVisible, children }) => {
 
   return (
     <div
-      className={`${Style.Container} ${visible ? Style.Visible : ''}`}
       onClick={handleModalClick}
+      className={`${Style.Container} ${visible ? Style.Visible : ''}`}
     >
       <div
         className={`${Style.Wrapper} ${visible ? Style.Visible : ''}`}
         onClick={(event) => event.stopPropagation()}
       >
         {children}
-        <button className={Style.Close} onClick={handleModalClick} />
+        <button
+          tabIndex={visible ? 0 : -1}
+          className={Style.Close}
+          onClick={handleModalClick}
+          aria-label="Close modal"
+        />
       </div>
     </div>
   );

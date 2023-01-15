@@ -30,6 +30,8 @@ const Card: FC<ICard> = ({
         <button
           className={`btn ${Style.Button}`}
           onClick={() => setVisibleModal(true)}
+          tabIndex={0}
+          aria-label={`Buy ${name} item`}
         >
           Buy
         </button>

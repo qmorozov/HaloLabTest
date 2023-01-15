@@ -1,0 +1,29 @@
+@use '../variables';
+
+.loader {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  max-width: variables.rem(64px);
+  max-height: variables.rem(64px);
+  min-width: variables.rem(64px);
+  min-height: variables.rem(64px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  div {
+    position: absolute;
+    border: variables.rem(2px) solid rgba(0, 31, 122, 0.3);
+    opacity: 1;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+
+    &:nth-child(2) {
+      animation-delay: -0.5s;
+    }
+  }
+}
